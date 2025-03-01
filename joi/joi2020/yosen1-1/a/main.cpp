@@ -3,19 +3,19 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-using ll = long long;
-
-#define rep(i, n) for (int i = 0; i < (n); i++)
 
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   int sum = 0;
-  rep(i, 3) {
+  for (int i = 0; i < 3; i++) {
     int x; cin >> x;
     sum += x;
   }
-  if (sum <= 4) cout << 1 << endl;
-  else cout << 2 << endl;
+  if (sum <= 4) {
+    cout << 1 << endl;
+  } else {
+    cout << 2 << endl;
+  }
   return 0;
 }

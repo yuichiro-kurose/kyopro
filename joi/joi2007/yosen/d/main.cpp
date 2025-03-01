@@ -3,32 +3,39 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-using ll = long long;
-
-#define rep(i, n) for (int i = 0; i < (n); i++)
 
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int n; cin >> n;
-  int m; cin >> m;
+  int n;
+  cin >> n;
+  int m;
+  cin >> m;
   vector<int> a(n * 2);
-  rep(i, n * 2) a[i] = i + 1;
-  rep(i, m) {
-    int k; cin >> k;
+  for (int i = 0; i < n * 2; i++) {
+    a[i] = i + 1;
+  }
+  for (int i = 0; i < m; i++) {
+    int k;
+    cin >> k;
     vector<int> na;
     if (k == 0) {
-      rep(j, n) {
+      for (int j = 0; j < n; j++) {
         na.push_back(a[j]);
         na.push_back(a[n + j]);
       }
-    }
-    else {
-      for (int j = k; j < n * 2; j++) na.push_back(a[j]);
-      rep(j, k) na.push_back(a[j]);
+    } else {
+      for (int j = k; j < n * 2; j++) {
+        na.push_back(a[j]);
+      }
+      for (int j = 0; j < k; j++) {
+        na.push_back(a[j]);
+      }
     }
     a = na;
   }
-  rep(i, n * 2) cout << a[i] << endl;
+  for (int i = 0; i < n * 2; i++) {
+    cout << a[i] << endl;
+  }
   return 0;
 }

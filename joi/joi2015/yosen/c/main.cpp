@@ -3,18 +3,20 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-using ll = long long;
-
-#define rep(i, n) for (int i = 0; i < (n); i++)
 
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int h, w; cin >> h >> w;
+  int h, w;
+  cin >> h >> w;
   vector<vector<char>> g(h, vector<char>(w));
-  rep(i, h) rep(j, w) cin >> g[i][j];
-  rep(i, h) {
-    rep(j, w) {
+  for (int i = 0; i < h; i++) {
+    for (int j = 0; j < w; j++) {
+      cin >> g[i][j];
+    }
+  }
+  for (int i = 0; i < h; i++) {
+    for (int j = 0; j < w; j++) {
       int now = j, ans = -1;
       while (now >= 0) {
         if (g[i][now] == 'c') {
@@ -23,7 +25,9 @@ int main() {
         }
         now--;
       }
-      if (j > 0) cout << ' ';
+      if (j > 0) {
+        cout << ' ';
+      }
       cout << ans;
     }
     cout << endl;

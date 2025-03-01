@@ -1,16 +1,14 @@
 // author: Yuichiro Kurose
 
 #include <bits/stdc++.h>
-using namespace std;
 
-#define rep(i, n) for (int i = 0; i < (n); i++)
+using namespace std;
 
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int s; cin >> s;
-  int a; cin >> a;
-  int b; cin >> b;
+  int s, a, b;
+  cin >> s >> a >> b;
   int ans = 250;
   s -= a;
   while (s > 0) {

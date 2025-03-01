@@ -1,6 +1,7 @@
 // author: Yuichiro Kurose
 
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int main() {
@@ -8,10 +9,8 @@ int main() {
   cin.tie(nullptr);
   int n;
   cin >> n;
-  string s;
-  cin >> s;
-  string t;
-  cin >> t;
+  string s, t;
+  cin >> s >> t;
   int ao = 0, bitaro = 0;
   for (int i = 0; i < n; i++) {
     if (s[i] == 'S' && t[i] == 'P') {

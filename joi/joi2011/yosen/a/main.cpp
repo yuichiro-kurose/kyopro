@@ -3,16 +3,14 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-using ll = long long;
-
-#define rep(i, n) for (int i = 0; i < (n); i++)
 
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   int sum = 0;
-  rep(i, 4) {
-    int a; cin >> a;
+  for (int i = 0; i < 4; i++) {
+    int a;
+    cin >> a;
     sum += a;
   }
   int x = sum / 60;

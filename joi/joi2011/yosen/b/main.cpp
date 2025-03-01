@@ -3,22 +3,26 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-using ll = long long;
-
-#define rep(i, n) for (int i = 0; i < (n); i++)
 
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  string s; cin >> s;
-  int n; cin >> n;
+  string s;
+  cin >> s;
+  int n;
+  cin >> n;
   int ans = 0;
-  rep(i, n) {
-    string t; cin >> t;
+  for (int i = 0; i < n; i++) {
+    string t;
+    cin >> t;
     t += t;
-    rep(j, t.size() - s.size() + 1) {
+    for (int j = 0; j < t.size() - s.size() + 1; j++) {
       bool f = true;
-      rep(k, s.size()) if (t[j + k] != s[k]) f = false;
+      for (int k = 0; k < s.size(); k++) {
+        if (t[j + k] != s[k]) {
+          f = false;
+        }
+      }
       if (f) {
         ans++;
         break;

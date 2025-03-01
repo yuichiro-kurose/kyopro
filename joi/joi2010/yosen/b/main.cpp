@@ -3,20 +3,22 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-using ll = long long;
-
-#define rep(i, n) for (int i = 0; i < (n); i++)
 
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int n, m; cin >> n >> m;
+  int n, m;
+  cin >> n >> m;
   vector<int> x(n);
-  rep(i, n) cin >> x[i];
+  for (int i = 0; i < n; i++) {
+    cin >> x[i];
+  }
   vector<int> a(m);
-  rep(i, m) cin >> a[i];
+  for (int i = 0; i < m; i++) {
+    cin >> a[i];
+  }
   int p = 1;
-  rep(i, m) {
+  for (int i = 0; i < m; i++) {
     p += a[i];
     if (p >= n) {
       cout << i + 1 << endl;
