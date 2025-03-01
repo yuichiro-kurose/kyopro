@@ -1,7 +1,6 @@
 // author: Yuichiro Kurose
 
 #include <bits/stdc++.h>
-
 using namespace std;
 
 int main() {
