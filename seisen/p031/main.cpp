@@ -17,29 +17,33 @@ int main() {
       cin >> g[i][j];
     }
   }
-  vector<vector<bool>> vis(h + 2, vector<bool>(w + 2, false));
-  queue<pair<int, int>> que;
-  vis[0][0] = true;
-  que.push(make_pair(0, 0));
-  while (!que.empty()) {
-    auto p = que.front();
-    que.pop();
-    int y = p.first, x = p.second;
-    for (int d = 0; d < 6; d++) {
-      int ny = y + dy[y & 1][d], nx = x + dx[y & 1][d];
-      if (ny < 0 || ny >= h + 2 || nx < 0 || nx >= w + 2) {
-        continue;
+  auto bfs = [&]() -> vector<vector<bool>> {
+    vector<vector<bool>> vis(h + 2, vector<bool>(w + 2, false));
+    queue<pair<int, int>> que;
+    vis[0][0] = true;
+    que.push(make_pair(0, 0));
+    while (!que.empty()) {
+      auto p = que.front();
+      que.pop();
+      int y = p.first, x = p.second;
+      for (int d = 0; d < 6; d++) {
+        int ny = y + dy[y & 1][d], nx = x + dx[y & 1][d];
+        if (nx < 0 || nx >= w + 2 || ny < 0 || ny >= h + 2) {
+          continue;
+        }
+        if (g[ny][nx] == 1) {
+          continue;
+        }
+        if (vis[ny][nx]) {
+          continue;
+        }
+        vis[ny][nx] = true;
+        que.push(make_pair(ny, nx));
       }
-      if (g[ny][nx] == 1) {
-        continue;
-      }
-      if (vis[ny][nx]) {
-        continue;
-      }
-      vis[ny][nx] = true;
-      que.push(make_pair(ny, nx));
     }
-  }
+    return vis;
+  };
+  vector<vector<bool>> vis = bfs();
   int ans = 0;
   for (int i = 1; i <= h; i++) {
     for (int j = 1; j <= w; j++) {

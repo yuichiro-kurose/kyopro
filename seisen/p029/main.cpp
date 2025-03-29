@@ -25,25 +25,33 @@ int main() {
       cin >> g[i][j];
     }
   }
-  vector<vector<int>> dist(r, vector<int>(c, -1));
-  queue<pair<int, int>> que;
-  dist[sx][sy] = 0;
-  que.push(make_pair(sx, sy));
-  while (!que.empty()) {
-    int x = que.front().first, y = que.front().second;
-    que.pop();
-    for (int d = 0; d < 4; d++) {
-      int nx = x + dx[d], ny = y + dy[d];
-      if (g[nx][ny] == '#') {
-        continue;
+  auto bfs = [&]() -> vector<vector<int>> {
+    vector<vector<int>> dist(r, vector<int>(c, -1));
+    queue<pair<int, int>> que;
+    dist[sx][sy] = 0;
+    que.push(make_pair(sx, sy));
+    while (!que.empty()) {
+      auto p = que.front();
+      que.pop();
+      int x = p.first, y = p.second;
+      for (int d = 0; d < 4; d++) {
+        int nx = x + dx[d], ny = y + dy[d];
+        if (nx < 0 || nx >= r || ny < 0 || ny >= c) {
+          continue;
+        }
+        if (g[nx][ny] == '#') {
+          continue;
+        }
+        if (dist[nx][ny] != -1) {
+          continue;
+        }
+        dist[nx][ny] = dist[x][y] + 1;
+        que.push(make_pair(nx, ny));
       }
-      if (dist[nx][ny] != -1) {
-        continue;
-      }
-      dist[nx][ny] = dist[x][y] + 1;
-      que.push(make_pair(nx, ny));
     }
-  }
+    return dist;
+  };
+  vector<vector<int>> dist = bfs();
   cout << dist[gx][gy] << endl;
   return 0;
 }

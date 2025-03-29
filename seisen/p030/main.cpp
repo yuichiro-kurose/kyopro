@@ -24,34 +24,37 @@ int main() {
   }
   int ans = 0;
   for (int a = 1; a <= n; a++) {
-    vector<vector<int>> dist(h, vector<int>(w, -1));
-    queue<pair<int, int>> que;
-    dist[sx][sy] = 0;
-    que.push(make_pair(sx, sy));
-    while (!que.empty()) {
-      auto p = que.front();
-      que.pop();
-      int x = p.first, y = p.second;
-      for (int d = 0; d < 4; d++) {
-        int nx = x + dx[d], ny = y + dy[d];
-        if (nx < 0 || nx >= h || ny < 0 || ny >= w) {
-          continue;
-        }
-        if (s[nx][ny] == 'X') {
-          continue;
-        }
-        if (dist[nx][ny] != -1) {
-          continue;
-        }
-        dist[nx][ny] = dist[x][y] + 1;
-        que.push(make_pair(nx, ny));
-        if (s[nx][ny] == a + '0') {
-          ans += dist[nx][ny];
-          sx = nx;
-          sy = ny;
+    auto bfs = [&]() -> void {
+      vector<vector<int>> dist(h, vector<int>(w, -1));
+      queue<pair<int, int>> que;
+      dist[sx][sy] = 0;
+      que.push(make_pair(sx, sy));
+      while (!que.empty()) {
+        auto p = que.front();
+        que.pop();
+        int x = p.first, y = p.second;
+        for (int d = 0; d < 4; d++) {
+          int nx = x + dx[d], ny = y + dy[d];
+          if (nx < 0 || nx >= h || ny < 0 || ny >= w) {
+            continue;
+          }
+          if (s[nx][ny] == 'X') {
+            continue;
+          }
+          if (dist[nx][ny] != -1) {
+            continue;
+          }
+          dist[nx][ny] = dist[x][y] + 1;
+          que.push(make_pair(nx, ny));
+          if (s[nx][ny] == a + '0') {
+            ans += dist[nx][ny];
+            sx = nx;
+            sy = ny;
+          }
         }
       }
-    }
+    };
+    bfs();
   }
   cout << ans << endl;
   return 0;

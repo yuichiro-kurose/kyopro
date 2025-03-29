@@ -18,20 +18,24 @@ int main() {
       g[u - 1].push_back(v - 1);
     }
   }
-  vector<int> d(n, -1);
-  queue<int> que;
-  d[0] = 0;
-  que.push(0);
-  while (!que.empty()) {
-    int u = que.front();
-    que.pop();
-    for (int v : g[u]) {
-      if (d[v] == -1) {
-        d[v] = d[u] + 1;
-        que.push(v);
+  auto bfs = [&]() -> vector<int> {
+    vector<int> dist(n, -1);
+    queue<int> que;
+    dist[0] = 0;
+    que.push(0);
+    while (!que.empty()) {
+      int u = que.front();
+      que.pop();
+      for (int v : g[u]) {
+        if (dist[v] == -1) {
+          dist[v] = dist[u] + 1;
+          que.push(v);
+        }
       }
     }
-  }
+    return dist;
+  };
+  vector<int> d = bfs();
   for (int i = 0; i < n; i++) {
     cout << i + 1 << ' ' << d[i] << endl;
   }
