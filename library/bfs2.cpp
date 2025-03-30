@@ -1,3 +1,5 @@
+// author: Yuichiro Kurose
+
 auto bfs = [&]() -> vector<vector<int>> {
   vector<vector<int>> dist(h, vector<int>(w, -1));
   queue<pair<int, int>> que;

@@ -1,3 +1,5 @@
+// author: Yuichiro Kurose
+
 auto bfs = [&]() -> vector<int> {
   vector<int> dist(n, -1);
   queue<int> que;
