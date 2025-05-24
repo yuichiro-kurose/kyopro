@@ -47,8 +47,12 @@ int main() {
     dist[0] = 0;
     que.push(make_pair(0, 0));
     while (!que.empty()) {
-      int u = que.top().second;
+      pair<long long, int> pa = que.top();
       que.pop();
+      int u = pa.second;
+      if (dist[u] < pa.first) {
+        continue;
+      }
       for (int v : g[u]) {
         if (danger[u] == 0) {
           continue;

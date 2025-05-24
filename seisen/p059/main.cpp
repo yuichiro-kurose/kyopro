@@ -54,8 +54,12 @@ int main() {
     dist[0] = 0;
     que.push(make_pair(0, 0));
     while (!que.empty()) {
-      int u = que.top().second;
+      pair<int, int> p = que.top();
       que.pop();
+      int u = p.second;
+      if (dist[u] < p.first) {
+        continue;
+      }
       for (int v : h[u]) {
         if (dist[v] > dist[u] + c[u]) {
           dist[v] = dist[u] + c[u];
