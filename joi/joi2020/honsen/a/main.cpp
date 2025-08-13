@@ -8,24 +8,30 @@ int main() {
   cin.tie(nullptr);
   int n;
   cin >> n;
-  vector<int> a(n + 1);
-  vector<long long> cnt(n + 1, 0);
-  for (int i = 1; i <= n; i++) {
-    cin >> a[i];
-    cnt[i] = 1;
-    while (a[i] % 2 == 0) {
-      cnt[i] *= 2;
-      a[i] /= 2;
+  vector<pair<int, int>> a(n + 1);
+  for (int i = 0; i < n + 1; i++) {
+    cin >> a[i].first;
+    a[i].second = i;
+  }
+  vector<int> b(n);
+  for (int i = 0; i < n; i++) {
+    cin >> b[i];
+  }
+  sort(a.begin(), a.end());
+  sort(b.begin(), b.end());
+  vector<int> c(n + 1, 0);
+  for (int i = 0; i < n; i++) {
+    c[a[n].second] = max(c[a[n].second], a[i].first - b[i]);
+  }
+  for (int i = n - 1; i >= 0; i--) {
+    c[a[i].second] = max(c[a[i + 1].second], a[i + 1].first - b[i]);
+  }
+  for (int i = 0; i < n + 1; i++) {
+    if (i > 0) {
+      cout << ' ';
     }
-    cnt[i] += cnt[i - 1];
+    cout << c[i];
   }
-  int q;
-  cin >> q;
-  while (q--) {
-    long long x;
-    cin >> x;
-    int idx = lower_bound(cnt.begin(), cnt.end(), x) - cnt.begin();
-    cout << a[idx] << endl;
-  }
+  cout << endl;
   return 0;
 }
