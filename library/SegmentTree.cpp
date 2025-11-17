@@ -11,7 +11,7 @@ public:
     while (n < sz) {
       n *= 2;
     }
-    node.resize(2 * n - 1, inf);
+    node.resize(2 * n - 1, INF);
     for (int i = 0; i < sz; i++) {
       node[i + n - 1] = v[i];
     }
@@ -32,7 +32,7 @@ public:
       r = n;
     }
     if (b <= l || r <= a) {
-      return inf;
+      return INF;
     }
     if (a <= l && r <= b) {
       return node[k];

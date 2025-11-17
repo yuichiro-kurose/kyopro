@@ -13,7 +13,7 @@ public:
       n *= 2;
     }
     node.resize(2 * n - 1);
-    lazy.resize(2 * n - 1, inf);
+    lazy.resize(2 * n - 1, INF);
     lazy_flag.resize(2 * n - 1, false);
     for (int i = 0; i < sz; i++) {
       node[i + n - 1] = v[i];
@@ -56,7 +56,7 @@ public:
     }
     LazyEvaluate(k, l, r);
     if (b <= l || r <= a) {
-      return inf;
+      return INF;
     }
     if (a <= l && r <= b) {
       return node[k];
